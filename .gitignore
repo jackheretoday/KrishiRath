@@ -1,0 +1,43 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment secrets - never commit
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+venv*/
+*.egg-info/
+
+# Training scripts (keep separate)
+train_crop_model.py
+
+# Large model/data files (>100MB - use Git LFS or store separately)
+dataset_and_model/improved_krishirath_model.joblib
+dataset_and_model/plant_disease_model.h5
+dataset_and_model/krishirath_equipment_dataset_20000.csv
