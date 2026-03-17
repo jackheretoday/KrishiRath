@@ -13,12 +13,17 @@ import {
   FlaskConical, 
   CloudRain, 
   ArrowLeft, 
-  Loader2, 
-  MapPin, 
+  Loader2,
+  MapPin,
   Wind,
   TrendingUp,
+  Search,
+  Sparkles,
   CheckCircle2
 } from "lucide-react";
+import { toast } from "sonner";
+import { motion, AnimatePresence } from "framer-motion";
+import { API_URL } from "@/lib/config";
 import { useToast } from "@/components/ui/use-toast";
 
 const CropPrediction = () => {
@@ -30,6 +35,8 @@ const CropPrediction = () => {
   const [locations, setLocations] = useState<{name: string, lat: number, lon: number}[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [showLocationList, setShowLocationList] = useState(false);
+  const [loadingProfile, setLoadingProfile] = useState(false);
+  const [predicting, setPredicting] = useState(false);
 
   const [formData, setFormData] = useState({
     N: "",
@@ -45,7 +52,7 @@ const CropPrediction = () => {
 
   useEffect(() => {
     // Fetch predefined locations
-    fetch('http://localhost:5001/locations')
+    fetch(`${API_URL}/locations`)
       .then(res => res.json())
       .then(data => setLocations(data))
       .catch(err => console.error("Error fetching locations:", err));
@@ -63,7 +70,8 @@ const CropPrediction = () => {
       
       // Auto-fetch soil profile for this location
       try {
-        const profileRes = await fetch(`http://localhost:5001/location-profile?lat=${loc.lat}&lon=${loc.lon}`);
+        setLoadingProfile(true);
+        const profileRes = await fetch(`${API_URL}/location-profile?lat=${loc.lat}&lon=${loc.lon}`);
         if (profileRes.ok) {
           const profileData = await profileRes.json();
           setFormData(prev => ({
@@ -81,6 +89,8 @@ const CropPrediction = () => {
         }
       } catch (err) {
         console.error("Error fetching profile on selection:", err);
+      } finally {
+        setLoadingProfile(false);
       }
     }
   };
@@ -126,7 +136,7 @@ const CropPrediction = () => {
 
           // Handle Soil Profile
           const profileRes = await fetch(
-            `http://localhost:5001/location-profile?lat=${latitude}&lon=${longitude}`
+            `${API_URL}/location-profile?lat=${latitude}&lon=${longitude}`
           );
           
           if (profileRes.ok) {
@@ -197,10 +207,11 @@ const CropPrediction = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setPredicting(true);
     setPrediction(null);
 
     try {
-      const response = await fetch("http://localhost:5001/predict-crop", {
+      const response = await fetch(`${API_URL}/predict-crop`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

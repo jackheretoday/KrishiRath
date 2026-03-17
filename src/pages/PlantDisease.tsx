@@ -19,6 +19,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
 import { motion, AnimatePresence } from 'framer-motion';
+import { API_URL } from '@/lib/config';
 
 const PlantDisease = () => {
   const navigate = useNavigate();
@@ -57,7 +58,7 @@ const PlantDisease = () => {
     formData.append('image', imageFile);
 
     try {
-      const response = await fetch('http://localhost:5001/predict-disease', {
+      const response = await fetch(`${API_URL}/predict-disease`, {
         method: 'POST',
         body: formData,
       });

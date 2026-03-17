@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { toast } from "sonner";
+import { API_URL } from "@/lib/config";
 
 interface User {
   id: string;
@@ -20,8 +21,6 @@ interface AuthContextType {
   logout: () => void;
   isAuthenticated: boolean;
 }
-
-const API_URL = "http://localhost:5001";
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 

@@ -8,8 +8,7 @@ import {
   Trash2, ShieldCheck, AlertTriangle, Search, LogOut
 } from "lucide-react";
 import { toast } from "sonner";
-
-const API = "http://localhost:5001";
+import { API_URL as API } from "@/lib/config";
 
 const AdminLogin = ({ onLogin }: { onLogin: (token: string, admin: any) => void }) => {
   const [email, setEmail] = useState("");

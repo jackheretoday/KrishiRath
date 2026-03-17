@@ -17,6 +17,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import ReviewModal from "@/components/ReviewModal";
 import OwnerMap from "@/components/OwnerMap";
 import { toast } from "sonner";
+import { API_URL } from "@/lib/config";
 
 const EQUIPMENT_TYPES = ["All Types", "Tractor", "Rotavator", "Harvester", "Seeder", "Cultivator", "Sprayer", "Planter", "Power Tiller"];
 
@@ -120,7 +121,7 @@ const FarmerDashboard = () => {
   const handleSuggest = async () => {
     setIsSuggesting(true);
     try {
-      const response = await fetch("http://localhost:5001/predict", {
+      const response = await fetch(`${API_URL}/predict`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ crop_type: cropType, land_size: parseFloat(landArea), soil_type: soilType })
@@ -146,7 +147,7 @@ const FarmerDashboard = () => {
       const formData = new FormData();
       formData.append("image", diseaseImage);
       
-      const response = await fetch("http://localhost:5001/predict-disease", {
+      const response = await fetch(`${API_URL}/predict-disease`, {
         method: "POST",
         body: formData,
       });

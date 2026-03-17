@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { Bell, CheckCheck, X } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
-
-const API = "http://localhost:5001";
+import { API_URL as API } from "@/lib/config";
 
 interface Notification {
   id: string;

@@ -4,6 +4,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { supabase } from "@/lib/supabase";
 import { toast } from "sonner";
 import { Star, MessageSquare } from "lucide-react";
+import { API_URL } from "@/lib/config";
 
 interface ReviewModalProps {
   bookingId: string;
@@ -25,7 +26,7 @@ const ReviewModal = ({ bookingId, equipmentName, open, onClose, onReviewed }: Re
     setLoading(true);
     try {
       const token = localStorage.getItem("krishirath_token");
-      const res = await fetch("http://localhost:5001/reviews", {
+      const res = await fetch(`${API_URL}/reviews`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
