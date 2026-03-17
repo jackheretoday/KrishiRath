@@ -273,14 +273,88 @@ const FarmerDashboard = () => {
           <p className="text-muted-foreground italic font-medium">{t('empowering_farm')}</p>
         </div>
 
-        {/* AI Suggester */}
+        {/* AI Agriculture Suite */}
         <section>
-          <Card className="border-2 border-primary/20 shadow-xl overflow-hidden bg-gradient-to-br from-white to-primary/5">
-            <CardHeader className="bg-primary/10 border-b-2 border-primary/10 py-5">
-              <CardTitle className="flex items-center gap-3 text-2xl font-black">
-                <Sparkles className="h-6 w-6 text-primary animate-pulse" />
-                {t('smart_suggester')}
+          <div className="flex flex-col md:flex-row gap-6">
+            {/* Crop Advisor Card */}
+            <Card className="flex-1 border-2 border-primary/20 shadow-xl overflow-hidden bg-gradient-to-br from-white to-primary/5 hover:scale-[1.02] transition-transform cursor-pointer" onClick={() => navigate("/crop-prediction")}>
+              <CardHeader className="bg-primary/10 border-b-2 border-primary/10 py-5">
+                <CardTitle className="flex items-center gap-3 text-2xl font-black">
+                  <div className="p-2 bg-primary/20 rounded-lg text-primary">
+                    <Sprout className="h-6 w-6" />
+                  </div>
+                  {t('crop_advisor') || "AI Crop Advisor"}
+                </CardTitle>
+                <CardDescription className="font-bold text-slate-500">
+                  Optimize your yield with soil-based recommendations.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between">
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2 text-sm font-bold text-slate-600">
+                      <CheckCircle2 className="h-4 w-4 text-primary" /> N-P-K Soil Analysis
+                    </div>
+                    <div className="flex items-center gap-2 text-sm font-bold text-slate-600">
+                      <CheckCircle2 className="h-4 w-4 text-primary" /> Weather Integration
+                    </div>
+                  </div>
+                  <div className="h-20 w-20 bg-primary/10 rounded-full flex items-center justify-center">
+                    <TrendingUp className="h-10 w-10 text-primary" />
+                  </div>
+                </div>
+                <Button className="w-full mt-6 h-12 font-black shadow-lg gap-2">
+                  Launch Advisor <Sparkles className="h-4 w-4" />
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Plant Doctor Card */}
+            <Card className="flex-1 border-2 border-emerald-500/20 shadow-xl overflow-hidden bg-gradient-to-br from-white to-emerald-50/20 hover:scale-[1.02] transition-transform cursor-pointer" onClick={() => navigate("/plant-disease")}>
+              <CardHeader className="bg-emerald-500/10 border-b-2 border-emerald-500/10 py-5">
+                <CardTitle className="flex items-center gap-3 text-2xl font-black text-emerald-700">
+                  <div className="p-2 bg-emerald-500/20 rounded-lg text-emerald-600">
+                    <Leaf className="h-6 w-6" />
+                  </div>
+                  {t('plant_doctor') || "AI Plant Doctor"}
+                </CardTitle>
+                <CardDescription className="font-bold text-slate-500">
+                  Detect diseases and get instant treatment plans.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between">
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2 text-sm font-bold text-slate-600">
+                      <CheckCircle2 className="h-4 w-4 text-emerald-600" /> Instant Image Scan
+                    </div>
+                    <div className="flex items-center gap-2 text-sm font-bold text-slate-600">
+                      <CheckCircle2 className="h-4 w-4 text-emerald-600" /> Treatment Guides
+                    </div>
+                  </div>
+                  <div className="h-20 w-20 bg-emerald-500/10 rounded-full flex items-center justify-center">
+                    <Camera className="h-10 w-10 text-emerald-600" />
+                  </div>
+                </div>
+                <Button className="w-full mt-6 h-12 font-black shadow-lg gap-2 bg-emerald-600 hover:bg-emerald-700">
+                  Open Clinic <Sparkles className="h-4 w-4" />
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* Existing Smart Suggester (Rebranded as Equipment AI) */}
+        <section>
+          <Card className="border-2 border-slate-200 shadow-xl overflow-hidden bg-white">
+            <CardHeader className="bg-slate-50 border-b-2 border-slate-100 py-5">
+              <CardTitle className="flex items-center gap-3 text-2xl font-black text-slate-800">
+                <Tractor className="h-6 w-6 text-primary" />
+                Equipment AI Assistant
               </CardTitle>
+              <CardDescription className="font-bold">
+                Get the right tools for your specific land and crop needs.
+              </CardDescription>
             </CardHeader>
             <CardContent className="p-6">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
@@ -321,11 +395,11 @@ const FarmerDashboard = () => {
                 </Button>
               </div>
               {isSuggesting && aiSuggestions.length > 0 && (
-                <div className="mt-6 p-5 bg-primary/5 rounded-2xl border-2 border-dashed border-primary/30">
-                  <p className="text-sm font-black text-primary uppercase tracking-widest mb-3">AI Recommendations:</p>
+                <div className="mt-6 p-5 bg-slate-50 rounded-2xl border-2 border-dashed border-slate-200">
+                  <p className="text-sm font-black text-slate-500 uppercase tracking-widest mb-3">Suggested Equipment:</p>
                   <div className="flex flex-wrap gap-2">
                     {aiSuggestions.map((s, i) => (
-                      <span key={i} className="px-4 py-2 bg-white text-primary text-sm font-black rounded-xl border-2 border-primary/10 flex items-center gap-2 shadow-sm">
+                      <span key={i} className="px-4 py-2 bg-white text-slate-700 text-sm font-black rounded-xl border-2 border-slate-100 flex items-center gap-2 shadow-sm">
                         <Tractor className="h-4 w-4" /> {s}
                       </span>
                     ))}
