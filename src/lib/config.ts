@@ -1,5 +1,5 @@
 /**
- * AgroRath API Configuration
+ * KrushiRath API Configuration
  * Dynamically detects the backend host to allow multic-device network access.
  */
 export const getApiUrl = () => {

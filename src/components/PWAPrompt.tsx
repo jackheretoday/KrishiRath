@@ -48,7 +48,7 @@ export const PWAPrompt = () => {
           <div className="p-6 space-y-4">
             {offlineReady ? (
               <p className="text-sm font-bold text-slate-600 leading-relaxed">
-                <span className="text-emerald-600">Sync Complete!</span> AgroRath is now available offline for mission-critical operations.
+                <span className="text-emerald-600">Sync Complete!</span> KrushiRath is now available offline for mission-critical operations.
               </p>
             ) : (
               <>

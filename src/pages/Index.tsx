@@ -152,7 +152,7 @@ const Index = () => {
             
             <div className="max-w-3xl relative z-10 space-y-10">
               <h2 className="text-4xl md:text-6xl font-black text-white tracking-tightest uppercase italic">Ready to optimize your harvest?</h2>
-              <p className="text-xl text-white/80 font-medium">Join the thousands of Indian farmers using AgroRath to build a sustainable and profitable future.</p>
+              <p className="text-xl text-white/80 font-medium">Join the thousands of Indian farmers using KrushiRath to build a sustainable and profitable future.</p>
               <div className="flex flex-wrap gap-6 pt-4">
                 <Link to="/register">
                   <Button size="lg" className="h-16 px-10 text-xl font-black rounded-2xl bg-white text-primary hover:bg-slate-50 shadow-2xl transition-all hover:scale-105">

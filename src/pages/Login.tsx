@@ -42,7 +42,7 @@ const Login = () => {
         <div className="h-16 w-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-primary/20 rotate-3">
           <span className="text-white font-black text-2xl uppercase tracking-tighter">AR</span>
         </div>
-        <h2 className="text-5xl font-black text-slate-900 tracking-tightest mb-2 italic uppercase">AGRO<span className="text-primary not-italic">RATH</span></h2>
+        <h2 className="text-5xl font-black text-slate-900 tracking-tightest mb-2 italic uppercase">KRUSHI<span className="text-primary not-italic">RATH</span></h2>
         <p className="text-slate-400 font-bold uppercase tracking-[0.2em] text-[10px]">{t('login_to_account')}</p>
       </div>
 
@@ -53,7 +53,7 @@ const Login = () => {
             <Input 
               required
               type="email"
-              placeholder="farmer@agrorath.in"
+              placeholder="farmer@krushirath.in"
               className="h-14 px-5 rounded-2xl border-2 bg-white/50 focus:bg-white transition-all font-bold text-slate-700"
               value={email}
               onChange={(e) => setEmail(e.target.value)}

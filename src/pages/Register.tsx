@@ -55,7 +55,7 @@ const Register = () => {
         <div className="h-14 w-14 bg-white shadow-xl rounded-2xl flex items-center justify-center mx-auto mb-6 border border-slate-100">
           <div className="h-8 w-8 bg-primary rounded-lg shadow-sm rotate-12" />
         </div>
-        <h2 className="text-5xl font-black text-slate-900 tracking-tightest mb-2 italic uppercase">AGRO<span className="text-primary not-italic">RATH</span></h2>
+          <h2 className="text-5xl font-black text-slate-900 tracking-tightest mb-2 italic uppercase">Krushi<span className="text-primary not-italic">Rath</span></h2>
         <p className="text-slate-400 font-bold uppercase tracking-[0.2em] text-[10px]">Initialize New Ecosystem Identity</p>
       </div>
 
@@ -157,7 +157,8 @@ const Register = () => {
                 <Input 
                   required 
                   type="email" 
-                  placeholder="active@agrorath.in" 
+                  placeholder="active@krushirath.in"
+ 
                   className="h-14 border-2 rounded-2xl bg-white/50 focus:bg-white font-bold"
                   value={formData.email}
                   onChange={(e) => setFormData({...formData, email: e.target.value})}

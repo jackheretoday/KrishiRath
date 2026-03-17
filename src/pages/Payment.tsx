@@ -34,6 +34,7 @@ const UPI_OPTIONS: { id: UpiMethod; label: string; color: string; bg: string; lo
 ];
 
 const Payment = () => {
+  // In production, KrushiRath would use Razorpay/Stripe API endpoints here.
   const navigate = useNavigate();
   const location = useLocation();
   const { bookingId, amount, equipmentName } = (location.state as any) || {};
@@ -184,11 +185,18 @@ const Payment = () => {
                <p className="text-xs font-black uppercase text-slate-400 mb-4 tracking-widest">Scan QR to Pay via {selectedOption?.label}</p>
                
                <div className="relative mx-auto w-48 h-48 bg-white p-3 border-4 border-slate-100 rounded-3xl shadow-inner mb-4 flex items-center justify-center">
-                  <img 
-                    src={`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi://pay?pa=agrorath@upi&pn=AgroRath&am=${amount}&cu=INR`} 
-                    alt="Payment QR Code"
-                    className="w-full h-full"
-                  />
+                  {(() => {
+                    const qrUrl = amount > 0 
+                      ? `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi://pay?pa=krushirath@upi&pn=KrushiRath&am=${amount}&cu=INR`
+                      : `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi://pay?pa=krushirath@upi&pn=KrushiRath`;
+                    return (
+                      <img 
+                        src={qrUrl} 
+                        alt="Payment QR Code"
+                        className="w-full h-full"
+                      />
+                    );
+                  })()}
                   <div className="absolute -bottom-2 -right-2 bg-primary text-white p-2 rounded-xl shadow-lg border-2 border-white">
                      <QrCode className="h-4 w-4" />
                   </div>
@@ -196,7 +204,7 @@ const Payment = () => {
                
                <div className="flex items-center justify-center gap-2 bg-slate-50 rounded-2xl p-3 border-2 border-dashed border-slate-200">
                   <Smartphone className="h-4 w-4 text-slate-400" />
-                  <span className="font-black text-slate-600 text-sm">agrorath@{selected}</span>
+                  <span className="font-black text-slate-600 text-sm">krushirath@{selected}</span>
                   <span className="text-[9px] bg-green-100 text-green-700 font-black px-2 py-0.5 rounded-full">VERIFIED MERCHANT</span>
                </div>
             </div>
