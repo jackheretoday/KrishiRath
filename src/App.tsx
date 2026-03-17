@@ -18,6 +18,7 @@ import PlantDisease from "./pages/PlantDisease";
 import ContactSupport from "./pages/ContactSupport";
 import NotFound from "./pages/NotFound";
 import { Navigate } from "react-router-dom";
+import { PWAPrompt } from "./components/PWAPrompt";
 
 const ProtectedRoute = ({ children, requiredRole }: { children: React.ReactNode, requiredRole?: "farmer" | "owner" }) => {
   const { role, isAuthenticated, isLoading } = useAuth();
@@ -48,6 +49,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <PWAPrompt />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
